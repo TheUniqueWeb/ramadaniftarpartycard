@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iftar Party ID Card Generator - 2026 (Royal Ramadan Edition)</title>
+    <style>
+        /* --- CSS Styling Start (Most Attractive & Colorful Ramadan Theme) --- */
+        body {
+            font-family: 'Poppins', sans-serif; /* Using a modern font */
+            background-color: #f0e6e6; /* Soft light background */
+            color: #4a148c; /* Deep Purple/Maroon Base */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            max-width: 1400px;
+            width: 100%;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            border-top: 10px solid #ffb300; /* Bright Gold Top Border */
+        }
+
+        .input-section, .output-section {
+            flex: 1;
+            min-width: 400px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #880e4f; /* Royal Purple/Maroon */
+            margin-bottom: 35px;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 3px rgba(136, 14, 79, 0.4);
+        }
+        
+        h2 {
+            color: #6a1b9a; /* Richer Purple */
+            border-bottom: 3px solid #ffb300; /* Gold Accent */
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            text-align: left;
+            color: #5a3a0d;
+        }
+
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ba68c8; /* Soft Purple Border */
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #ffb300; /* Gold Focus */
+            box-shadow: 0 0 8px rgba(255, 179, 0, 0.5);
+        }
+
+        button {
+            background-color: #ffb300; /* Bright Gold Button */
+            color: #4a148c; /* Deep Purple Text */
+            padding: 14px 30px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 30px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 6px 12px rgba(255, 179, 0, 0.4);
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #ffc107; /* Lighter Gold on hover */
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(255, 179, 0, 0.5);
+        }
+        
+        #printBtn {
+            background-color: #4caf50; /* Classic Green for Print */
+            color: white;
+        }
+        #printBtn:hover {
+            background-color: #388e3c;
+        }
+
+        /* --- ID Card Styling (Royal Ramadan Feel) --- */
+        .id-card {
+            width: 380px; 
+            height: 240px;
+            background: linear-gradient(145deg, #fffaf0, #ffffff); /* Creamy White Gradient */
+            border: 4px double #880e4f; /* Double Maroon Border */
+            border-radius: 20px;
+            box-shadow: 0 18px 45px rgba(136, 14, 79, 0.4); /* Deep shadow */
+            margin: 20px auto;
+            padding: 18px;
+            color: #3d2d1e;
+            text-align: left;
+            position: relative; 
+            overflow: hidden;
+        }
+
+        /* Ramadan Design Element: Subtle Geometric Islamic Motif */
+        .id-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Subtle repeating pattern using gold color */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='p' width='20' height='20' patternUnits='userSpaceOnUse'%3E%3Cpath d='M20 0 L0 20 L20 40 L40 20 Z' fill='%23ffb300' opacity='0.1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");
+            background-size: 40px 40px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card-header {
+            background-color: #880e4f; /* Royal Header */
+            color: #ffb300; /* Gold Text */
+            padding: 8px 15px;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+            margin: -18px -18px 18px -18px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-header h3 {
+            margin: 5px 0;
+            font-size: 1.6em;
+            letter-spacing: 1px;
+        }
+
+        .card-body {
+            display: flex;
+            gap: 20px;
+            padding: 5px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .photo-placeholder {
+            width: 100px;
+            height: 100px;
+            background-color: #eeeeee;
+            border: 4px solid #ffb300; /* Gold Photo Border */
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            text-align: center;
+            flex-shrink: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .details {
+            flex-grow: 1;
+            font-size: 1em;
+        }
+
+        .details p {
+            margin: 6px 0;
+            line-height: 1.6;
+        }
+        .details strong {
+            color: #5a3a0d;
+            font-weight: 700;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 2px solid #ffb300; /* Gold separator */
+            padding-top: 10px;
+            font-size: 0.9em;
+            position: absolute;
+            bottom: 18px;
+            left: 18px;
+            right: 18px;
+            z-index: 1;
+        }
+
+        .venue-date-time p {
+            margin: 3px 0;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.05em;
+        }
+        .signature strong {
+            color: #880e4f;
+            font-weight: 800;
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body { background-color: #ffffff !important; }
+            body * { visibility: hidden; }
+            .id-card, .id-card * { visibility: visible; }
+            .id-card {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) scale(1.2); /* Larger on print */
+                margin: 0;
+                border: none;
+                box-shadow: none;
+            }
+            .id-card::before { display: none !important; } /* Remove pattern on print */
+            #printBtn, .input-section, h1, .main-container > div:first-child {
+                display: none !important;
+            }
+            .main-container { box-shadow: none; padding: 0;}
+        }
+        /* --- CSS Styling End --- */
+    </style>
+</head>
+<body>
+
+    <h1>Iftar Party ID Card Generator - 2026</h1>
+
+    <div class="main-container">
+        
+        <div class="input-section">
+            <h2>১. তথ্য ইনপুট করুন</h2>
+            
+            <label for="name">নাম (Name):</label>
+            <input type="text" id="name" placeholder="যেমন: আব্দুল করিম" oninput="updatePreview()">
+
+            <label for="id_no">আইডি নং (ID No.):</label>
+            <input type="text" id="id_no" placeholder="যেমন: IP2024001" oninput="updatePreview()">
+
+            <label for="mobile_no">মোবাইল নং (Mobile No.):</label>
+            <input type="text" id="mobile_no" placeholder="যেমন: 017xxxxxxxx" oninput="updatePreview()">
+
+            <label for="photoUpload">ছবি আপলোড (ঐচ্ছিক):</label>
+            <input type="file" id="photoUpload" accept="image/*" onchange="loadPhoto(event)">
+            
+            <hr style="margin: 30px 0; border-top: 2px dotted #ffb300;">
+            
+            <h2>২. পার্টির বিবরণ (সহজে পরিবর্তন করুন)</h2>
+            <label for="party_venue">স্থান (Venue):</label>
+            <input type="text" id="party_venue" value="Royal Banquet Hall, Baridhara" oninput="updatePreview()">
+
+            <label for="party_date">তারিখ (Date):</label>
+            <input type="text" id="party_date" value="10 April 2026" oninput="updatePreview()">
+
+            <label for="party_time">সময় (Time):</label>
+            <input type="text" id="party_time" value="06:45 PM" oninput="updatePreview()">
+
+            <button onclick="printCard()">তৈরি করুন ও প্রিন্ট/ডাউনলোড করুন</button>
+        </div>
+
+        <div class="output-section">
+            <h2>৩. আইডি কার্ড প্রিভিউ</h2>
+            <div id="idCardContainer" style="display: flex; justify-content: center;">
+                
+                <div id="iftaCard" class="id-card">
+                    <div class="card-header">
+                        <h3>Iftar Party - 2026</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="photo-placeholder" id="photoArea">
+                            <p>ছবি<br> (Photo)</p>
+                        </div>
+                        <div class="details">
+                            <p><strong>Name:</strong> <span id="cardName">-- নাম --</span></p>
+                            <p><strong>Id No :</strong>:</strong> <span id="cardIdNo">-- ID --</span></p>
+                            <p><strong>Mobile No::</strong> <span id="cardMobile">-- Mobile --</span></p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="venue-date-time">
+                            <p><strong>তারিখ:</strong> <span id="cardDate">-- Date --</span></p>
+                            <p><strong>সময়:</strong> <span id="cardTime">-- Time --</span></p>
+                            <p><strong>স্থান:</strong> <span id="cardVenue">-- Venue --</span></p>
+                        </div>
+                        <div class="signature">
+                            <p>Signture:</p>
+                            <p><strong>Mahamud</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- JavaScript Logic Start ---
+
+        // Function to update card preview instantly on input change
+        function updatePreview() {
+            // Get Input Values
+            const name = document.getElementById('name').value.trim() || '-- নাম --';
+            const idNo = document.getElementById('id_no').value.trim() || '-- ID --';
+            const mobileNo = document.getElementById('mobile_no').value.trim() || '-- Mobile --';
+            
+            const venue = document.getElementById('party_venue').value.trim() || '-- Venue --';
+            const date = document.getElementById('party_date').value.trim() || '-- Date --';
+            const time = document.getElementById('party_time').value.trim() || '-- Time --';
+
+            // Update Card Content
+            document.getElementById('cardName').textContent = name;
+            document.getElementById('cardIdNo').textContent = idNo;
+            document.getElementById('cardMobile').textContent = mobileNo;
+
+            document.getElementById('cardDate').textContent = date;
+            document.getElementById('cardTime').textContent = time;
+            document.getElementById('cardVenue').textContent = venue;
+        }
+
+        // Function to load the uploaded photo
+        function loadPhoto(event) {
+            const output = document.getElementById('photoArea');
+            output.innerHTML = ''; // Clear previous content
+            
+            if (event.target.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const img = document.createElement('img');
+                    img.src = reader.result;
+                    img.alt = "Attendee Photo";
+                    output.appendChild(img);
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            } else {
+                // Reset to placeholder if file is cleared
+                output.innerHTML = '<p>ছবি<br> (Photo)</p>';
+            }
+        }
+
+        // Function to trigger Print Dialog
+        function printCard() {
+            // Final check before printing
+            const name = document.getElementById('name').value.trim();
+            if (!name || name === '-- নাম --') {
+                 alert("দয়া করে কার্ড তৈরির জন্য নাম পূরণ করুন।");
+                 return;
+            }
+            // This triggers the browser's print dialog.
+            window.print();
+        }
+
+        // Initialize preview on load with default/placeholder values
+        document.addEventListener('DOMContentLoaded', () => {
+            updatePreview();
+        });
+
+        // --- JavaScript Logic End ---
+    </script>
+
+</body>
+              </html>
